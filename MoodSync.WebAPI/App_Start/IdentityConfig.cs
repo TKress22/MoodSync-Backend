@@ -1,20 +1,12 @@
-<<<<<<< HEAD:MoodSync,.WebAPI/App_Start/IdentityConfig.cs
+
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
-using MoodSync_.WebAPI.Data;
-using MoodSync_.WebAPI.Models;
 using System;
 using System.Threading.Tasks;
-=======
-﻿using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin;
+
 using MoodSync.WebAPI.Models;
->>>>>>> CrudTest:MoodSync.WebAPI/App_Start/IdentityConfig.cs
 
 namespace MoodSync.WebAPI
 {
@@ -52,9 +44,6 @@ namespace MoodSync.WebAPI
             }
             return manager;
         }
-<<<<<<< HEAD:MoodSync,.WebAPI/App_Start/IdentityConfig.cs
 
-=======
->>>>>>> CrudTest:MoodSync.WebAPI/App_Start/IdentityConfig.cs
     }
 }
