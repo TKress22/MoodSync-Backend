@@ -1,0 +1,5 @@
+# pack-refs with: peeled fully-peeled sorted 
+0a724e0e691b02d1cac1781ec07e43a5d724352e refs/remotes/origin/MoodCRUD
+471a102ee5de4cdb778ee86d2c327b2e98cd189e refs/remotes/origin/develop
+98189fd787a0261e0b446fe180f8d915b7c11a23 refs/remotes/origin/master
+42ba142cf4dadf1090f93f532d3499f58961132f refs/remotes/origin/playlistCRUD

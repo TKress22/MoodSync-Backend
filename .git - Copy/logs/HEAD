@@ -1,0 +1,20 @@
+0000000000000000000000000000000000000000 471a102ee5de4cdb778ee86d2c327b2e98cd189e Jon Perkins <jonperkins1150@gmail.com> 1554731167 -0400	clone: from https://github.com/jonperkins1150/MoodSync-Backend.git
+471a102ee5de4cdb778ee86d2c327b2e98cd189e 471a102ee5de4cdb778ee86d2c327b2e98cd189e Jon Perkins <jonperkins1150@gmail.com> 1554734073 -0400	checkout: moving from develop to CRUD
+471a102ee5de4cdb778ee86d2c327b2e98cd189e 59972a9d674d95297c6cc6a5d90748b6feac20cb Jon Perkins <jonperkins1150@gmail.com> 1554734153 -0400	commit: CRUD for Mood
+59972a9d674d95297c6cc6a5d90748b6feac20cb 471a102ee5de4cdb778ee86d2c327b2e98cd189e Jon Perkins <jonperkins1150@gmail.com> 1554734403 -0400	checkout: moving from CRUD to develop
+471a102ee5de4cdb778ee86d2c327b2e98cd189e 2ce81ff19a5c5945de68e768239520de6b00a6be Jon Perkins <jonperkins1150@gmail.com> 1554734410 -0400	pull: Fast-forward
+2ce81ff19a5c5945de68e768239520de6b00a6be 2ce81ff19a5c5945de68e768239520de6b00a6be Jon Perkins <jonperkins1150@gmail.com> 1554734481 -0400	checkout: moving from develop to CrudGenre
+2ce81ff19a5c5945de68e768239520de6b00a6be e60af12da321d808eab88c714ca27a54aa1787be Jon Perkins <jonperkins1150@gmail.com> 1554736819 -0400	commit: created CRUD Moods and Genre
+e60af12da321d808eab88c714ca27a54aa1787be 2ce81ff19a5c5945de68e768239520de6b00a6be Jon Perkins <jonperkins1150@gmail.com> 1554737526 -0400	checkout: moving from CrudGenre to develop
+2ce81ff19a5c5945de68e768239520de6b00a6be 02300d9cd7d548a2be03fa7dbae7fed66ca2e78a Jon Perkins <jonperkins1150@gmail.com> 1554737569 -0400	pull: Fast-forward
+02300d9cd7d548a2be03fa7dbae7fed66ca2e78a 02300d9cd7d548a2be03fa7dbae7fed66ca2e78a Jon Perkins <jonperkins1150@gmail.com> 1554737711 -0400	checkout: moving from develop to CrudTest
+02300d9cd7d548a2be03fa7dbae7fed66ca2e78a 02300d9cd7d548a2be03fa7dbae7fed66ca2e78a Jon Perkins <jonperkins1150@gmail.com> 1554743374 -0400	checkout: moving from CrudTest to develop
+02300d9cd7d548a2be03fa7dbae7fed66ca2e78a a34d80b50a52083281327952c827521b959bfa95 Jon Perkins <jonperkins1150@gmail.com> 1554744135 -0400	pull: Fast-forward
+a34d80b50a52083281327952c827521b959bfa95 a34d80b50a52083281327952c827521b959bfa95 Jon Perkins <jonperkins1150@gmail.com> 1554744170 -0400	checkout: moving from develop to CrudTest
+a34d80b50a52083281327952c827521b959bfa95 a4d558681d5b3361eea611a964a6426d46f26923 Jon Perkins <jonperkins1150@gmail.com> 1554751832 -0400	commit: fixed ,.WebAPI issue
+a4d558681d5b3361eea611a964a6426d46f26923 a34d80b50a52083281327952c827521b959bfa95 Jon Perkins <jonperkins1150@gmail.com> 1554752122 -0400	checkout: moving from CrudTest to develop
+a34d80b50a52083281327952c827521b959bfa95 a4d558681d5b3361eea611a964a6426d46f26923 Jon Perkins <jonperkins1150@gmail.com> 1554752149 -0400	checkout: moving from develop to CrudTest
+a4d558681d5b3361eea611a964a6426d46f26923 a4d558681d5b3361eea611a964a6426d46f26923 Jon Perkins <jonperkins1150@gmail.com> 1554752262 -0400	checkout: moving from CrudTest to CrudTest
+a4d558681d5b3361eea611a964a6426d46f26923 a34d80b50a52083281327952c827521b959bfa95 Jon Perkins <jonperkins1150@gmail.com> 1554752278 -0400	checkout: moving from CrudTest to develop
+a34d80b50a52083281327952c827521b959bfa95 445c25f72fb050ea763979369fa180e7593196bb Jon Perkins <jonperkins1150@gmail.com> 1554752291 -0400	pull: Fast-forward
+445c25f72fb050ea763979369fa180e7593196bb 445c25f72fb050ea763979369fa180e7593196bb Jon Perkins <jonperkins1150@gmail.com> 1554752446 -0400	checkout: moving from develop to develop
