@@ -9,6 +9,7 @@ using System.Web.Http;
 
 namespace MoodSync.WebAPI.Controllers
 {
+    [Authorize]
     public class GenreController : ApiController
     {
         public IHttpActionResult GetAll()
@@ -40,6 +41,14 @@ namespace MoodSync.WebAPI.Controllers
 
         public IHttpActionResult Put(GenreEdit genre)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateGenreService();
+
+            if (!service.UpdateGenre(genre))
+                return InternalServerError();
+
             return Ok();
         }
 
