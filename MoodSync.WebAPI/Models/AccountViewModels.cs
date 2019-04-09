@@ -31,6 +31,8 @@ namespace MoodSync.WebAPI.Models
 
         public bool HasRegistered { get; set; }
 
+        public string Role { get; set; }
+
         public string LoginProvider { get; set; }
     }
 

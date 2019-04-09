@@ -9,7 +9,7 @@ using System.Web.Http;
 
 namespace MoodSync.WebAPI.Controllers
 {
-
+    [Authorize]
     public class MoodController : ApiController
     {
         public IHttpActionResult GetAll()
@@ -41,6 +41,14 @@ namespace MoodSync.WebAPI.Controllers
 
         public IHttpActionResult Put(MoodEdit mood)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateMoodService();
+
+            if (!service.UpdateMood(mood))
+                return InternalServerError();
+
             return Ok();
         }
 
