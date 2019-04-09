@@ -57,11 +57,16 @@ namespace MoodSync.WebAPI.Controllers
         public UserInfoViewModel GetUserInfo()
         {
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
-
+            string role = "";
+            if (User.IsInRole("Admin"))
+            {
+                role = "Admin";
+            }
             return new UserInfoViewModel
             {
                 Email = User.Identity.GetUserName(),
                 HasRegistered = externalLogin == null,
+                Role = role,
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
             };
         }
@@ -74,45 +79,70 @@ namespace MoodSync.WebAPI.Controllers
             return Ok();
         }
 
-        // GET api/Account/ManageInfo?returnUrl=%2F&generateState=true
-        [Route("ManageInfo")]
-        public async Task<ManageInfoViewModel> GetManageInfo(string returnUrl, bool generateState = false)
-        {
-            IdentityUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+        //// GET api/Account/ManageInfo?returnUrl=%2F&generateState=true
+        //[Route("ManageInfo")]
+        //public async Task<ManageInfoViewModel> GetManageInfo(string returnUrl, bool generateState = false)
+        //{
+        //    IdentityUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
 
-            if (user == null)
-            {
-                return null;
-            }
+        //    if (user == null)
+        //    {
+        //        return null;
+        //    }
 
-            List<UserLoginInfoViewModel> logins = new List<UserLoginInfoViewModel>();
+        //    List<UserLoginInfoViewModel> logins = new List<UserLoginInfoViewModel>();
 
-            foreach (IdentityUserLogin linkedAccount in user.Logins)
-            {
-                logins.Add(new UserLoginInfoViewModel
-                {
-                    LoginProvider = linkedAccount.LoginProvider,
-                    ProviderKey = linkedAccount.ProviderKey
-                });
-            }
+        //    foreach (IdentityUserLogin linkedAccount in user.Logins)
+        //    {
+        //        logins.Add(new UserLoginInfoViewModel
+        //        {
+        //            LoginProvider = linkedAccount.LoginProvider,
+        //            ProviderKey = linkedAccount.ProviderKey
+        //        });
+        //    }
 
-            if (user.PasswordHash != null)
-            {
-                logins.Add(new UserLoginInfoViewModel
-                {
-                    LoginProvider = LocalLoginProvider,
-                    ProviderKey = user.UserName,
-                });
-            }
+        //    if (user.PasswordHash != null)
+        //    {
+        //        logins.Add(new UserLoginInfoViewModel
+        //        {
+        //            LoginProvider = LocalLoginProvider,
+        //            ProviderKey = user.UserName,
+        //        });
+        //    }
 
-            return new ManageInfoViewModel
-            {
-                LocalLoginProvider = LocalLoginProvider,
-                Email = user.UserName,
-                Logins = logins,
-                ExternalLoginProviders = GetExternalLogins(returnUrl, generateState)
-            };
-        }
+        //    userinfoedit userdata = new userservice(guid.parse(user.identity.getuserid())).getuserbyid(guid.parse(user.identity.getuserid()));
+        //    return new manageinfoviewmodel
+        //    {
+        //        localloginprovider = localloginprovider,
+        //        email = user.username,
+        //        logins = logins,
+        //        externalloginproviders = getexternallogins(returnurl, generatestate)
+        //    };
+        //}
+
+//        [HttpGet]
+//        [Route("GetRole")]
+//#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+//        public async Task<IHttpActionResult> GetRole()
+//#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+//        {
+//            if (User.IsInRole("Admin"))
+//            {
+//                return Ok(
+//                    new RoleData()
+//                    {
+//                        Role = "Admin",
+//                        Value = true,
+//                    });
+//            }
+           
+//            return Ok(new RoleData()
+//            {
+//                Role = "",
+//                Value = false,
+//            });
+//        }
+
 
         // POST api/Account/ChangePassword
         [Route("ChangePassword")]
