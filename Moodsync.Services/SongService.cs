@@ -8,8 +8,26 @@ using System.Threading.Tasks;
 
 namespace Moodsync.Services
 {
-    class SongService
+    public class SongService
     {
+        public bool CreateSong(SongCreate model)
+        {
+            var entity =
+                new Song()
+                {
+                    SongName = model.SongName,
+                    GenreId = model.GenreID,
+                    Album = model.Album,
+                    Artist = model.Artist,
+                    ChildFriendly = model.ChildFriendly
+                };
+
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.Songs.Add(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
         public SongFetch GetSongById(int songId)
         {
             using (var ctx = new ApplicationDbContext())
@@ -28,6 +46,149 @@ namespace Moodsync.Services
                         Artist = entity.Artist,
                         ChildFriendly = entity.ChildFriendly
                     };
+            }
+        }
+        public IEnumerable<SongFetch> GetSongByGenre(int genreId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Songs
+                        .Where(e => e.GenreId == genreId)
+                        .Select(
+                            e =>
+                                new SongFetch
+                                {
+                                    SongId = e.SongId,
+                                    GenreId = e.GenreId,
+                                    SongName = e.SongName,
+                                    Album = e.Album,
+                                    Artist = e.Artist,
+                                    ChildFriendly = e.ChildFriendly
+                                }
+                        );
+
+                return query.ToArray();
+            }
+        }
+        public IEnumerable<SongFetch> GetSongByArtist(string artist)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Songs
+                        .Where(e => e.Artist == artist)
+                        .Select(
+                            e =>
+                                new SongFetch
+                                {
+                                    SongId = e.SongId,
+                                    GenreId = e.GenreId,
+                                    SongName = e.SongName,
+                                    Album = e.Album,
+                                    Artist = e.Artist,
+                                    ChildFriendly = e.ChildFriendly
+                                }
+                        );
+
+                return query.ToArray();
+            }
+        }
+        public IEnumerable<SongFetch> GetSongByAlbum(string album)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Songs
+                        .Where(e => e.Album == album)
+                        .Select(
+                            e =>
+                                new SongFetch
+                                {
+                                    SongId = e.SongId,
+                                    GenreId = e.GenreId,
+                                    SongName = e.SongName,
+                                    Album = e.Album,
+                                    Artist = e.Artist,
+                                    ChildFriendly = e.ChildFriendly
+                                }
+                        );
+
+                return query.ToArray();
+            }
+        }
+        public IEnumerable<SongFetch> GetSongByName(string name)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Songs
+                        .Where(e => e.SongName == name)
+                        .Select(
+                            e =>
+                                new SongFetch
+                                {
+                                    SongId = e.SongId,
+                                    GenreId = e.GenreId,
+                                    SongName = e.SongName,
+                                    Album = e.Album,
+                                    Artist = e.Artist,
+                                    ChildFriendly = e.ChildFriendly
+                                }
+                        );
+
+                return query.ToArray();
+            }
+        }
+        public IEnumerable<SongFetch> GetSongByChildFriendly(bool friendly)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Songs
+                        .Where(e => e.ChildFriendly == friendly)
+                        .Select(
+                            e =>
+                                new SongFetch
+                                {
+                                    SongId = e.SongId,
+                                    GenreId = e.GenreId,
+                                    SongName = e.SongName,
+                                    Album = e.Album,
+                                    Artist = e.Artist,
+                                    ChildFriendly = e.ChildFriendly
+                                }
+                        );
+
+                return query.ToArray();
+            }
+        }
+        public IEnumerable<SongFetch> GetSongs()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Songs
+                        .Select(
+                            e =>
+                                new SongFetch
+                                {
+                                    SongId = e.SongId,
+                                    GenreId = e.GenreId,
+                                    SongName = e.SongName,
+                                    Album = e.Album,
+                                    Artist = e.Artist,
+                                    ChildFriendly = e.ChildFriendly
+                                }
+                        );
+
+                return query.ToArray();
             }
         }
         public bool DeleteSong(int songId)
