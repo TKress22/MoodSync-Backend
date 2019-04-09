@@ -60,7 +60,7 @@ namespace Moodsync.Services
                 var entity =
                     ctx
                     .Playlists
-                    .Single(e => e.PlaylistId == e.PlaylistId && e.UserId == _userId);
+                    .Single(e => e.PlaylistId == playlistId && e.UserId == _userId);
                 return
                     new PlaylistDetail
                     {
@@ -79,11 +79,12 @@ namespace Moodsync.Services
                     ctx
                     .Playlists
                     .Single(e => e.PlaylistId == model.PlaylistId && e.UserId == _userId);
+                entity.PlaylistName = model.PlaylistName;
                 entity.SongList = model.SongList;
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool DeleteFromPlaylist(int playlistId)
+        public bool DeletePlaylist(int playlistId)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -99,4 +100,5 @@ namespace Moodsync.Services
         }
     }
 }
+
 
