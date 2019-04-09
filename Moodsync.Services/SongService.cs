@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Moodsync.Services
 {
-    class SongService
+    public class SongService
     {
         public bool CreateSong(SongCreate model)
         {
