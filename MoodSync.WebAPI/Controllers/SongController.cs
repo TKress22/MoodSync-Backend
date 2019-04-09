@@ -61,24 +61,24 @@ namespace MoodSync.WebAPI.Controllers
 
             return Ok();
         }
-        public IHttpActionResult GetSongBy(int type, string inp)
+        public IHttpActionResult GetSongBy(string type, string inp)
         {
             SongService service = CreateSongService();
-            switch (type)
+            switch (type.ToLower())
             {
-                case 0:
+                case "all":
                     return Ok(service.GetSongs());
-                case 1:
+                case "id":
                     return Ok(service.GetSongById(int.Parse(inp)));
-                case 2:
+                case "genre":
                     return Ok(service.GetSongByGenre(int.Parse(inp)));
-                case 3:
+                case "name":
                     return Ok(service.GetSongByName(inp));
-                case 4:
+                case "artist":
                     return Ok(service.GetSongByArtist(inp));
-                case 5:
+                case "album":
                     return Ok(service.GetSongByAlbum(inp));
-                case 6:
+                case "child":
                     return Ok(service.GetSongByChildFriendly(bool.Parse(inp)));
             }
             return Ok();
