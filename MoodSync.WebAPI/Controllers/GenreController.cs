@@ -1,5 +1,5 @@
 ﻿using Moodsync.Services;
-using MoodSync.Models.Genre;
+using MoodSync.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
