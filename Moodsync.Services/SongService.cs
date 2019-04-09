@@ -10,6 +10,24 @@ namespace Moodsync.Services
 {
     class SongService
     {
+        public bool CreateSong(SongCreate model)
+        {
+            var entity =
+                new Song()
+                {
+                    SongName = model.SongName,
+                    GenreId = model.GenreID,
+                    Album = model.Album,
+                    Artist = model.Artist,
+                    ChildFriendly = model.ChildFriendly
+                };
+
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.Songs.Add(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
         public SongFetch GetSongById(int songId)
         {
             using (var ctx = new ApplicationDbContext())
