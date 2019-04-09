@@ -11,7 +11,7 @@ namespace MoodSync.WebAPI.Controllers
 {
     public class SongController : ApiController
     {
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult GetById(int id)
         {
             SongService songService = CreateSongService();
             var song = songService.GetSongById(id);
@@ -19,8 +19,8 @@ namespace MoodSync.WebAPI.Controllers
         }
         private SongService CreateSongService()
         {
-            var GenreService = new SongService();
-            return GenreService;
+            var SongService = new SongService();
+            return SongService;
         }
     }
 }
