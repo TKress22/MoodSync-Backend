@@ -17,7 +17,6 @@ namespace MoodSync.Models
         [Required]
         public string PlaylistName { get; set; }
         [Required]
-        public string SongList { get; set; }
-        public virtual Song Song { get; set; }
+        public string SongList { get; set; }        
     }
 }
