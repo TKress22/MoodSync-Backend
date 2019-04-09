@@ -1,4 +1,4 @@
-﻿using MoodSync.Models.Song;
+﻿using MoodSync.Models;
 using MoodSync.Data;
 using System;
 using System.Collections.Generic;
