@@ -1,13 +1,14 @@
-﻿using System;
+﻿using MoodSync.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoodSync.Data
+namespace MoodSync.Models
 {
-    public class Playlist
+    public class PlaylistListItem
     {
         [Key]
         public int PlaylistId { get; set; }
@@ -17,6 +18,6 @@ namespace MoodSync.Data
         public string PlaylistName { get; set; }
         [Required]
         public string SongList { get; set; }
-        public virtual Song Song {get; set;}        
+        public virtual Song Song { get; set; }
     }
 }

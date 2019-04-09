@@ -1,4 +1,0 @@
-Merge branch 'CrudTest' into develop
-
-# Conflicts:
-#	MoodSync.WebAPI/App_Start/IdentityConfig.cs

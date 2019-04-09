@@ -87,21 +87,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Playlist\PlaylistCreate.cs" />
-    <Compile Include="Playlist\PlaylistDetail.cs" />
-    <Compile Include="Playlist\PlaylistEdit.cs" />
-    <Compile Include="Playlist\PlaylistListItem.cs" />
-    <Compile Include="Genre\GenreCreate.cs" />
-    <Compile Include="Genre\GenreDetail.cs" />
-    <Compile Include="Genre\GenreEdit.cs" />
-    <Compile Include="Genre\GenreListItem.cs" />
-    <Compile Include="Mood\MoodCreate.cs" />
-    <Compile Include="Mood\MoodDetail.cs" />
-    <Compile Include="Mood\MoodEdit.cs" />
-    <Compile Include="Mood\MoodListItem.cs" />
+    <Compile Include="PlaylistCreate.cs" />
+    <Compile Include="PlaylistDetail.cs" />
+    <Compile Include="PlaylistEdit.cs" />
+    <Compile Include="PlaylistListItem.cs" />
+    <Compile Include="GenreCreate.cs" />
+    <Compile Include="GenreDetail.cs" />
+    <Compile Include="GenreEdit.cs" />
+    <Compile Include="GenreListItem.cs" />
+    <Compile Include="MoodCreate.cs" />
+    <Compile Include="MoodDetail.cs" />
+    <Compile Include="MoodEdit.cs" />
+    <Compile Include="MoodListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Song\SongCreate.cs" />
-    <Compile Include="Song\SongFetch.cs" />
+    <Compile Include="SongCreate.cs" />
+    <Compile Include="SongFetch.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
