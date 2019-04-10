@@ -29,6 +29,7 @@ namespace MoodSync.WebAPI.Controllers
         //    }
         //    return InternalServerError();
         //}
+        [Authorize(Roles = "Administrator")]
         public IHttpActionResult Post(SongCreate song)
         {
             if (!ModelState.IsValid)
@@ -53,6 +54,7 @@ namespace MoodSync.WebAPI.Controllers
 
             return Ok();
         }
+        [Authorize(Roles = "Administrator")]
         public IHttpActionResult Delete(int id)
         {
             var service = CreateSongService();

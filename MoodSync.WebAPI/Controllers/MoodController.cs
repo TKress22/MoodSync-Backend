@@ -25,7 +25,7 @@ namespace MoodSync.WebAPI.Controllers
             var mood = moodservice.GetMoodById(id);
             return Ok(mood);
         }
-
+        [Authorize(Roles = "Administrator")]
         public IHttpActionResult Post(MoodCreate mood)
         {
             if (!ModelState.IsValid)
@@ -38,7 +38,7 @@ namespace MoodSync.WebAPI.Controllers
 
             return Ok();
         }
-
+        [Authorize(Roles = "Administrator")]
         public IHttpActionResult Put(MoodEdit mood)
         {
             if (!ModelState.IsValid)
@@ -51,7 +51,7 @@ namespace MoodSync.WebAPI.Controllers
 
             return Ok();
         }
-
+        [Authorize(Roles = "Administrator")]
         public IHttpActionResult Delete(int id)
         {
             var service = CreateMoodService();
