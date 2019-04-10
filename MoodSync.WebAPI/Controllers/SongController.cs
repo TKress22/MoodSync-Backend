@@ -9,6 +9,7 @@ using System.Web.Http;
 
 namespace MoodSync.WebAPI.Controllers
 {
+    [Authorize]
     public class SongController : ApiController
     {
         //public IHttpActionResult GetSongBy(object o)
