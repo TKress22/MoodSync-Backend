@@ -25,7 +25,7 @@ namespace MoodSync.WebAPI.Controllers
             var genre = genreService.GetGenreById(id);
             return Ok(genre);
         }
-
+        [Authorize(Roles = "Administrator")]
         public IHttpActionResult Post(GenreCreate genre)
         {
             if (!ModelState.IsValid)
@@ -38,7 +38,7 @@ namespace MoodSync.WebAPI.Controllers
 
             return Ok();
         }
-
+        [Authorize(Roles = "Administrator")]
         public IHttpActionResult Put(GenreEdit genre)
         {
             if (!ModelState.IsValid)
@@ -51,7 +51,7 @@ namespace MoodSync.WebAPI.Controllers
 
             return Ok();
         }
-
+        [Authorize(Roles = "Administrator")]
         public IHttpActionResult Delete(int id)
         {
             var service = CreateGenreService();

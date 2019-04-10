@@ -10,6 +10,8 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using MoodSync.WebAPI.Models;
+using MoodSync.Data;
+using ApplicationUser = MoodSync.WebAPI.Models.ApplicationUser;
 
 namespace MoodSync.WebAPI.Providers
 {
