@@ -35,6 +35,10 @@ namespace MoodSync.WebAPI.Models
     public class RegisterBindingModel
     {
         [Required]
+        [Display(Name = "User Name")]
+        public string UserName { get; set; }
+
+        [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
@@ -48,6 +52,8 @@ namespace MoodSync.WebAPI.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+       
     }
 
     public class RegisterExternalBindingModel

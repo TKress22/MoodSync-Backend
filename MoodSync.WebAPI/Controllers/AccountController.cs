@@ -13,6 +13,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
+using MoodSync.Data;
 using MoodSync.WebAPI.Models;
 using MoodSync.WebAPI.Providers;
 using MoodSync.WebAPI.Results;
@@ -357,14 +358,16 @@ namespace MoodSync.WebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser() { UserName = model.UserName, Email = model.Email };
 
-            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+            var result = await UserManager.CreateAsync(user, model.Password);
 
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
             }
+
+            await this.UserManager.AddToRoleAsync(user.Id, "User");
 
             return Ok();
         }

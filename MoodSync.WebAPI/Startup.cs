@@ -31,15 +31,19 @@ namespace MoodSync.WebAPI
             if (!roleManager.RoleExists("Administrator"))
             {
                 // first we create Admin rool   
-                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "Administrator";
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+                {
+                    Name = "Administrator"
+                };
                 roleManager.Create(role);
 
                 //Here we create a Admin who will maintain the website                  
 
-                var user = new ApplicationUser();
-                user.UserName = "administrator";
-                user.Email = "admin@admin.com";
+                var user = new ApplicationUser
+                {
+                    UserName = "administrator",
+                    Email = "admin@admin.com"
+                };
 
                 string password = "Test!1234";
 
@@ -54,8 +58,10 @@ namespace MoodSync.WebAPI
             // creating Creating User role    
             if (!roleManager.RoleExists("User"))
             {
-                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "User";
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+                {
+                    Name = "User"
+                };
                 roleManager.Create(role);
 
             }

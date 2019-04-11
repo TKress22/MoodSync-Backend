@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using MoodSync.WebAPI.Providers;
 using MoodSync.WebAPI.Models;
+using MoodSync.Data;
 
 namespace MoodSync.WebAPI
 {
