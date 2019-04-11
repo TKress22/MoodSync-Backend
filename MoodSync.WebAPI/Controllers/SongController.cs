@@ -42,6 +42,7 @@ namespace MoodSync.WebAPI.Controllers
 
             return Ok();
         }
+        [Authorize(Roles = "Administrator")]
         public IHttpActionResult Put(SongFetch song)
         {
             if (!ModelState.IsValid)
