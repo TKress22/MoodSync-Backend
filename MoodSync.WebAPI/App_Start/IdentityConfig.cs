@@ -7,6 +7,7 @@ using System;
 using System.Threading.Tasks;
 
 using MoodSync.WebAPI.Models;
+using MoodSync.Data;
 
 namespace MoodSync.WebAPI
 {
