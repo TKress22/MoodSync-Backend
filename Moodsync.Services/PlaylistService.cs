@@ -34,12 +34,13 @@ namespace Moodsync.Services
         }
         public IEnumerable<PlaylistListItem> GetPlaylist()
         {
+            Guid AdminId = new Guid("59d26814-eca7-47c2-bb35-70a56df01f8a");
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
                     .Playlists
-                    .Where(e => e.UserId == _userId)
+                    .Where(e => e.UserId == _userId || e.UserId == AdminId)
                     .Select(
                         e =>
                         new PlaylistListItem
