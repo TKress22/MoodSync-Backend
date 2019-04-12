@@ -19,6 +19,7 @@ namespace MoodSync.WebAPI.Controllers
             var playlists = playlistService.GetPlaylist();
             return Ok(playlists);
         }
+        
         public IHttpActionResult Get(int id)
         {
             PlaylistService playlistService = CreatePlaylistService();

@@ -54,6 +54,27 @@ namespace Moodsync.Services
                 return query.ToArray();
             }
         }
+
+        public IEnumerable<PlaylistListItem> AdminGetPlaylist()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Playlists
+                    .Select(
+                        e =>
+                        new PlaylistListItem
+                        {
+                            UserId = e.UserId,
+                            PlaylistId = e.PlaylistId,
+                            PlaylistName = e.PlaylistName,
+                            SongList = e.SongList,
+                        }
+                        );
+                return query.ToArray();
+            }
+        }
         public PlaylistDetail GetPlaylistById(int playlistId)
         {
             using (var ctx = new ApplicationDbContext())
