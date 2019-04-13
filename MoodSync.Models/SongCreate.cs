@@ -8,7 +8,8 @@ namespace MoodSync.Models
 {
     public class SongCreate
     {
-        public int GenreID { get; set; }
+        public int SongId { get; set; }
+        public int GenreId { get; set; }
         public string SongName { get; set; }
         public string Artist { get; set; }
         public string Album { get; set; }
