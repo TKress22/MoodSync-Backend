@@ -34,7 +34,7 @@ namespace Moodsync.Services
         }
         public IEnumerable<PlaylistListItem> GetPlaylist()
         {
-            Guid AdminId = new Guid("59d26814-eca7-47c2-bb35-70a56df01f8a");
+            Guid AdminId = new Guid("c64823e1-4799-4dd0-887b-b9aba7e60ee2");
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
