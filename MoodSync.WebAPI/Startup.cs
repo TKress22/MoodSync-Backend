@@ -13,6 +13,7 @@ namespace MoodSync.WebAPI
     {
         public void Configuration(IAppBuilder app)
         {
+            //ransford: Added this
             app.UseCors(CorsOptions.AllowAll);
             ConfigureAuth(app);
             CreateRolesandUsers();

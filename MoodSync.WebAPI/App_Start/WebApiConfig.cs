@@ -7,7 +7,7 @@ namespace MoodSync.WebAPI
     {
         public static void Register(HttpConfiguration config)
         {
-            //ransford
+            //ransford: Commented this out from before
             //var enableCorsAttribute = new EnableCorsAttribute("*", "*", "*");
             //config.EnableCors(enableCorsAttribute);
 
