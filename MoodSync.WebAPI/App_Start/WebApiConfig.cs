@@ -11,7 +11,6 @@ namespace MoodSync.WebAPI
             //var enableCorsAttribute = new EnableCorsAttribute("*", "*", "*");
             //config.EnableCors(enableCorsAttribute);
 
-
             // Web API configuration and services
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
