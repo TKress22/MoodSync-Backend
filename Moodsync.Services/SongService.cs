@@ -15,7 +15,6 @@ namespace Moodsync.Services
             var entity =
                 new Song()
                 {
-                    SongId = model.SongId,
                     SongName = model.SongName,
                     GenreId = model.GenreId,
                     Album = model.Album,
