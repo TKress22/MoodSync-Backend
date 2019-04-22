@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace MoodSync.WebAPI.Models
 {
@@ -29,9 +30,14 @@ namespace MoodSync.WebAPI.Models
     {
         public string Email { get; set; }
 
+        public string Role { get; set; }
+
         public bool HasRegistered { get; set; }
 
         public string LoginProvider { get; set; }
+
+
+        public Guid? UserId { get; set; }
     }
 
     public class UserLoginInfoViewModel
@@ -39,5 +45,11 @@ namespace MoodSync.WebAPI.Models
         public string LoginProvider { get; set; }
 
         public string ProviderKey { get; set; }
+    }
+
+    public class RoleData
+    {
+        public string Role { get; set; }
+        public bool Value { get; set; }
     }
 }

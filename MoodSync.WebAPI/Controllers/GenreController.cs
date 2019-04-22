@@ -1,14 +1,17 @@
 ﻿using Moodsync.Services;
-using MoodSync.Models.Genre;
+using MoodSync.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace MoodSync.WebAPI.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [Authorize]
     public class GenreController : ApiController
     {
         public IHttpActionResult GetAll()
@@ -24,7 +27,7 @@ namespace MoodSync.WebAPI.Controllers
             var genre = genreService.GetGenreById(id);
             return Ok(genre);
         }
-
+        [Authorize(Roles = "Administrator")]
         public IHttpActionResult Post(GenreCreate genre)
         {
             if (!ModelState.IsValid)
@@ -37,12 +40,20 @@ namespace MoodSync.WebAPI.Controllers
 
             return Ok();
         }
-
+        [Authorize(Roles = "Administrator")]
         public IHttpActionResult Put(GenreEdit genre)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateGenreService();
+
+            if (!service.UpdateGenre(genre))
+                return InternalServerError();
+
             return Ok();
         }
-
+        [Authorize(Roles = "Administrator")]
         public IHttpActionResult Delete(int id)
         {
             var service = CreateGenreService();

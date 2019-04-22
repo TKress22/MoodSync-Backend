@@ -1,15 +1,17 @@
 ﻿using Moodsync.Services;
-using MoodSync.Models.Mood;
+using MoodSync.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace MoodSync.WebAPI.Controllers
 {
-
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [Authorize]
     public class MoodController : ApiController
     {
         public IHttpActionResult GetAll()
@@ -25,7 +27,7 @@ namespace MoodSync.WebAPI.Controllers
             var mood = moodservice.GetMoodById(id);
             return Ok(mood);
         }
-
+        [Authorize(Roles = "Administrator")]
         public IHttpActionResult Post(MoodCreate mood)
         {
             if (!ModelState.IsValid)
@@ -38,12 +40,20 @@ namespace MoodSync.WebAPI.Controllers
 
             return Ok();
         }
-
+        [Authorize(Roles = "Administrator")]
         public IHttpActionResult Put(MoodEdit mood)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateMoodService();
+
+            if (!service.UpdateMood(mood))
+                return InternalServerError();
+
             return Ok();
         }
-
+        [Authorize(Roles = "Administrator")]
         public IHttpActionResult Delete(int id)
         {
             var service = CreateMoodService();

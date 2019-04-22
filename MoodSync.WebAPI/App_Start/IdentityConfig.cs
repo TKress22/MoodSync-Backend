@@ -1,20 +1,13 @@
-<<<<<<< HEAD:MoodSync,.WebAPI/App_Start/IdentityConfig.cs
+
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
-using MoodSync_.WebAPI.Data;
-using MoodSync_.WebAPI.Models;
 using System;
 using System.Threading.Tasks;
-=======
-﻿using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin;
+
 using MoodSync.WebAPI.Models;
->>>>>>> CrudTest:MoodSync.WebAPI/App_Start/IdentityConfig.cs
+using MoodSync.Data;
 
 namespace MoodSync.WebAPI
 {
@@ -39,11 +32,11 @@ namespace MoodSync.WebAPI
             // Configure validation logic for passwords
             manager.PasswordValidator = new PasswordValidator
             {
-                RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
-                RequireDigit = true,
-                RequireLowercase = true,
-                RequireUppercase = true,
+                RequiredLength = 4,
+                RequireNonLetterOrDigit = false,
+                RequireDigit = false,
+                RequireLowercase = false,
+                RequireUppercase = false,
             };
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
@@ -52,9 +45,6 @@ namespace MoodSync.WebAPI
             }
             return manager;
         }
-<<<<<<< HEAD:MoodSync,.WebAPI/App_Start/IdentityConfig.cs
 
-=======
->>>>>>> CrudTest:MoodSync.WebAPI/App_Start/IdentityConfig.cs
     }
 }

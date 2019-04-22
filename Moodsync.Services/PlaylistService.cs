@@ -1,5 +1,5 @@
 ﻿using MoodSync.Data;
-using MoodSync.Models.Playlist;
+using MoodSync.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,12 +34,34 @@ namespace Moodsync.Services
         }
         public IEnumerable<PlaylistListItem> GetPlaylist()
         {
+            Guid AdminId = new Guid("c64823e1-4799-4dd0-887b-b9aba7e60ee2");
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
                     .Playlists
-                    .Where(e => e.UserId == _userId)
+                    .Where(e => e.UserId == _userId || e.UserId == AdminId)
+                    .Select(
+                        e =>
+                        new PlaylistListItem
+                        {
+                            UserId = e.UserId,
+                            PlaylistId = e.PlaylistId,
+                            PlaylistName = e.PlaylistName,
+                            SongList = e.SongList,
+                        }
+                        );
+                return query.ToArray();
+            }
+        }
+
+        public IEnumerable<PlaylistListItem> AdminGetPlaylist()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Playlists
                     .Select(
                         e =>
                         new PlaylistListItem
@@ -60,7 +82,7 @@ namespace Moodsync.Services
                 var entity =
                     ctx
                     .Playlists
-                    .Single(e => e.PlaylistId == e.PlaylistId && e.UserId == _userId);
+                    .Single(e => e.PlaylistId == playlistId && e.UserId == _userId);
                 return
                     new PlaylistDetail
                     {
@@ -79,11 +101,12 @@ namespace Moodsync.Services
                     ctx
                     .Playlists
                     .Single(e => e.PlaylistId == model.PlaylistId && e.UserId == _userId);
+                entity.PlaylistName = model.PlaylistName;
                 entity.SongList = model.SongList;
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool DeleteFromPlaylist(int playlistId)
+        public bool DeletePlaylist(int playlistId)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -99,4 +122,5 @@ namespace Moodsync.Services
         }
     }
 }
+
 

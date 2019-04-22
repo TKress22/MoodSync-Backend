@@ -1,5 +1,5 @@
 ﻿using MoodSync.Data;
-using MoodSync.Models.Mood;
+using MoodSync.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

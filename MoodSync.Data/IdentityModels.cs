@@ -1,8 +1,5 @@
-﻿//using Microsoft.AspNet.Identity;
-//using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using MoodSync.Data;
 using System;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
@@ -73,7 +70,7 @@ namespace MoodSync.Data
         {
             public IdentityUserRoleConfiguration()
             {
-                HasKey(iur => iur.RoleId);
+                HasKey(iur => iur.UserId);
             }
         }
     }

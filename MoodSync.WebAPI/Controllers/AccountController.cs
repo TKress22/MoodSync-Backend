@@ -6,13 +6,13 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using System.Web.Http.ModelBinding;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
+using MoodSync.Data;
 using MoodSync.WebAPI.Models;
 using MoodSync.WebAPI.Providers;
 using MoodSync.WebAPI.Results;
@@ -57,12 +57,18 @@ namespace MoodSync.WebAPI.Controllers
         public UserInfoViewModel GetUserInfo()
         {
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
-
+            string role = "";
+            if (User.IsInRole("Administrator"))
+            {
+                role = "Administrator";
+            }
             return new UserInfoViewModel
             {
                 Email = User.Identity.GetUserName(),
                 HasRegistered = externalLogin == null,
-                LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
+                Role = role,
+                LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null,
+                UserId = Guid.Parse(User.Identity.GetUserId())
             };
         }
 
@@ -113,6 +119,27 @@ namespace MoodSync.WebAPI.Controllers
                 ExternalLoginProviders = GetExternalLogins(returnUrl, generateState)
             };
         }
+        [HttpGet]
+        [Route("GetRole")]
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+        public async Task<IHttpActionResult> GetRole()
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+        {
+            if (User.IsInRole("Administrator"))
+            {
+                return Ok(
+                    new RoleData()
+                    {
+                        Role = "Administrator",
+                        Value = true,
+                    });
+            }
+            return Ok(new RoleData()
+            {
+                Role = "",
+                Value = false,
+            });
+        }
 
         // POST api/Account/ChangePassword
         [Route("ChangePassword")]
@@ -125,7 +152,7 @@ namespace MoodSync.WebAPI.Controllers
 
             IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
                 model.NewPassword);
-            
+
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
@@ -258,9 +285,9 @@ namespace MoodSync.WebAPI.Controllers
             if (hasRegistered)
             {
                 Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-                
-                 ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
-                    OAuthDefaults.AuthenticationType);
+
+                ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
+                   OAuthDefaults.AuthenticationType);
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
@@ -328,14 +355,16 @@ namespace MoodSync.WebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser() { UserName = model.UserName, Email = model.Email };
 
-            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+            var result = await UserManager.CreateAsync(user, model.Password);
 
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
             }
+
+            await this.UserManager.AddToRoleAsync(user.Id, "User");
 
             return Ok();
         }
@@ -368,7 +397,7 @@ namespace MoodSync.WebAPI.Controllers
             result = await UserManager.AddLoginAsync(user.Id, info.Login);
             if (!result.Succeeded)
             {
-                return GetErrorResult(result); 
+                return GetErrorResult(result);
             }
             return Ok();
         }

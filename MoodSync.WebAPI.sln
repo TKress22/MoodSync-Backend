@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoodSync.Services", "Moodsy
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoodSync.WebAPI", "MoodSync.WebAPI\MoodSync.WebAPI.csproj", "{21FDD8FA-F485-44C3-8FA5-8E397ACF86D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoodSync.Contracts", "MoodSync.Contracts\MoodSync.Contracts.csproj", "{91F67756-704A-4A08-9086-EBDB44AB7D3A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{21FDD8FA-F485-44C3-8FA5-8E397ACF86D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21FDD8FA-F485-44C3-8FA5-8E397ACF86D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21FDD8FA-F485-44C3-8FA5-8E397ACF86D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91F67756-704A-4A08-9086-EBDB44AB7D3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91F67756-704A-4A08-9086-EBDB44AB7D3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91F67756-704A-4A08-9086-EBDB44AB7D3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91F67756-704A-4A08-9086-EBDB44AB7D3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

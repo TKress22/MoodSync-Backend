@@ -43,9 +43,6 @@
     <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
     </Reference>
@@ -87,17 +84,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminService.cs" />
     <Compile Include="MoodService.cs" />
     <Compile Include="PlaylistService.cs" />
     <Compile Include="GenreService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SongService.cs" />
+    <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MoodSync.Contracts\MoodSync.Contracts.csproj">
+      <Project>{91F67756-704A-4A08-9086-EBDB44AB7D3A}</Project>
+      <Name>MoodSync.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MoodSync.Data\MoodSync.Data.csproj">
       <Project>{ef3d0fcb-6985-433c-9677-a3697014a19c}</Project>
       <Name>MoodSync.Data</Name>
