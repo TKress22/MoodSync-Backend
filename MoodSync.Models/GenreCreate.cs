@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 namespace MoodSync.Models
 {
     public class GenreCreate
-    {
-        
+    {        
         [Required]
         public string GenreName { get; set; }
     }
