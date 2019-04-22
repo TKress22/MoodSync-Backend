@@ -15,7 +15,6 @@ namespace Moodsync.Services
             var entity =
               new Mood()
               {
-                  MoodId = model.MoodId,
                   MoodName = model.MoodName,
               };
             using (var ctx = new ApplicationDbContext())
