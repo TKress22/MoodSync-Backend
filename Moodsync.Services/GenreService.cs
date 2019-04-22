@@ -15,7 +15,6 @@ namespace Moodsync.Services
             var entity =
               new Genre()
               {
-                  GenreId = model.GenreId,
                   GenreName = model.GenreName,
               };
             using (var ctx = new ApplicationDbContext())
@@ -24,7 +23,7 @@ namespace Moodsync.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public IEnumerable <GenreListItem> GetGenre()
+        public IEnumerable<GenreListItem> GetGenre()
         {
             using (var ctx = new ApplicationDbContext())
             {
