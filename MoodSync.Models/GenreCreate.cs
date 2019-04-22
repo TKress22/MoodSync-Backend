@@ -9,8 +9,7 @@ namespace MoodSync.Models
 {
     public class GenreCreate
     {
-        [Key]
-        public int GenreId { get; set; }
+        
         [Required]
         public string GenreName { get; set; }
     }

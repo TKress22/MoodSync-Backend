@@ -9,8 +9,6 @@ namespace MoodSync.Models
 {
     public class MoodCreate
     {
-        [Key]
-        public int MoodId { get; set; }
         [Required]
         public string MoodName { get; set; }
     }

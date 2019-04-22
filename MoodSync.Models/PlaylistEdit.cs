@@ -13,8 +13,6 @@ namespace MoodSync.Models
         [Key]
         public int PlaylistId { get; set; }
         [Required]
-        public Guid UserId { get; set; }
-        [Required]
         public string PlaylistName { get; set; }
         [Required]
         public string SongList { get; set; }
