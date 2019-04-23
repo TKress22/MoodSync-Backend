@@ -23,6 +23,7 @@ namespace Moodsync.Services
             {
                 var playlist = new Playlist()
                 {
+                    UserId = _userId,
                     PlaylistName = model.PlaylistName,
                     SongList = model.SongList,
                 };
