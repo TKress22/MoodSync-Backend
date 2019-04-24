@@ -100,6 +100,7 @@ namespace Moodsync.Services
                     ctx
                     .Playlists
                     .Single(e => e.PlaylistId == model.PlaylistId && e.UserId == _userId);
+                entity.UserId = _userId;
                 entity.PlaylistName = model.PlaylistName;
                 entity.SongList = model.SongList;
                 return ctx.SaveChanges() == 1;
