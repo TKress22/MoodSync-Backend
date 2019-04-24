@@ -94,12 +94,13 @@ namespace Moodsync.Services
         }
         public bool UpdatePlaylist(PlaylistEdit model)
         {
+            Guid AdminId = new Guid("c64823e1-4799-4dd0-887b-b9aba7e60ee2");
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .Playlists
-                    .Single(e => e.PlaylistId == model.PlaylistId && e.UserId == _userId);
+                    .Single(e => e.PlaylistId == model.PlaylistId && e.UserId == _userId || e.UserId == AdminId);
                 entity.UserId = _userId;
                 entity.PlaylistName = model.PlaylistName;
                 entity.SongList = model.SongList;
